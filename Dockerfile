@@ -11,6 +11,15 @@ RUN mamba env update -p /opt/conda --file /opt/conda/environment.yml \
 
 COPY dask.yaml /home/jovyan/.config/dask/dask.yaml
 
+RUN pip install --extra-index-url="https://packages.dea.ga.gov.au" \
+  odc-ui \
+  odc-stac \
+  odc-stats \
+  odc-algo \
+  odc-io \
+  odc-cloud[ASYNC] \
+  odc-dscache
+
 ENV \
   GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR
 
